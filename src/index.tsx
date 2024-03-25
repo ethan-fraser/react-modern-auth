@@ -1,4 +1,4 @@
-import Auth from "./Auth";
+import ReactModernAuth from "./ReactModernAuth";
 import {
   Theme,
   AuthErrorType,
@@ -26,7 +26,7 @@ import {
   AuthConfig,
 } from "./types";
 
-export { Auth };
+export { ReactModernAuth };
 export type {
   Theme,
   AuthErrorType,
