@@ -1,5 +1,5 @@
 import styles from "./ErrorMessage.module.css";
-import exclamationMark from "../assets/exclamation-mark.svg";
+import exclamationMark from "../../assets/exclamation-mark.svg";
 import { CSSProperties } from "react";
 
 type ErrorMessageProps = {

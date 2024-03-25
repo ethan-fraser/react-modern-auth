@@ -1,8 +1,8 @@
 import { useState } from "react";
 import styles from "./TextInput.module.css";
-import eye from "../assets/eye.svg";
-import eyeSlash from "../assets/eye-slash.svg";
-import exclamationMark from "../assets/exclamation-mark.svg";
+import eye from "../../assets/eye.svg";
+import eyeSlash from "../../assets/eye-slash.svg";
+import exclamationMark from "../../assets/exclamation-mark.svg";
 
 type TextInputProps = {
   type?: "text" | "email" | "password";
