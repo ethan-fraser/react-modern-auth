@@ -1,0 +1,19 @@
+.button {
+  width: 100%;
+  padding: 8px 16px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.primary {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.secondary {
+  background-color: #6c757d; /* Example secondary color */
+  color: white;
+}

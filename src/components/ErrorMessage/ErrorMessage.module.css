@@ -1,0 +1,18 @@
+.errorMessage {
+  background-color: #ffeeee;
+  font-size: 0.8em;
+  color: #D8181B;
+  font-weight: 500;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  padding: 0.6em;
+  text-align: left;
+}
+
+.errorMessage img {
+  height: 1.5em;
+  width: 1.8em;
+  padding: 0 0.5em;
+  filter: invert(11%) sepia(87%) saturate(5833%) hue-rotate(353deg) brightness(96%) contrast(89%);
+}

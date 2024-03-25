@@ -1,0 +1,52 @@
+.signUpContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.signUpForm {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+}
+
+@media only screen and (min-width: 768px) {
+  .signUpForm {
+    width: 50%;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .signUpForm {
+    width: 40%;
+  }
+}
+
+.firstLastNameContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+@media only screen and (min-width: 600px) {
+  .firstLastNameContainer {
+    flex-direction: row;
+    gap: 1em;
+  }
+}
+
+.logInPrompt {
+  margin-top: 1em;
+  text-align: center;
+}
+
+.logInText {
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 600px) {
+  .logInPrompt {
+    display: flex;
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,76 @@
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2em;
+  position: relative;
+  width: 100%;
+}
+
+.labelContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.label {
+  align-self: flex-start;
+  font-weight: 700;
+}
+
+.eyeIcon {
+  position: absolute;
+  bottom: -1.5em;
+  right: 1em;
+  height: 15px;
+  cursor: pointer;
+}
+
+.errorMessage {
+  display: flex;
+  font-size: 0.8em;
+  color: #E72326;
+  font-weight: 500;
+}
+
+.errorMessage img {
+  height: 1.5em;
+  width: 1.8em;
+  align-self: center;
+}
+
+.textInput {
+  padding: 8px;
+  border: 1px solid #dddddddd;
+  border-radius: 4px;
+  outline: none;
+}
+
+.textInput:focus {
+  box-shadow: 0px -1px 1px var(--accent-color) inset;
+}
+
+.erroredInput {
+  border: 1px solid #E72326;
+  background-color: #ffeeee;
+}
+
+.erroredInput:focus {
+  box-shadow: 0px -1px 1px #ef7f83 inset;
+}
+
+.required {
+  font-weight: 400;
+  color: #E72326;
+  margin-left: 0.1em;
+}
+
+@media (prefers-color-scheme: dark) {
+  .textInput {
+    border: 1px solid #333;
+  }
+
+  .eyeIcon {
+    filter: invert(87%) sepia(100%) saturate(34%) hue-rotate(73deg) brightness(114%) contrast(107%);
+  }
+}
