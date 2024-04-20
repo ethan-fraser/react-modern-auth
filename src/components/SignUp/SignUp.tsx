@@ -225,6 +225,7 @@ function SignUp({
 
   return (
     <div className={styles.signUpContainer}>
+      <h1>Sign Up</h1>
       <form className={styles.signUpForm}>
         {getFirstErrorByType("general") && (
           <ErrorMessage style={{ marginBottom: "1em" }}>
@@ -282,7 +283,7 @@ function SignUp({
       <span className={styles.logInPrompt}>
         Already have an account?{" "}
         <b className={styles.logInText} onClick={() => setSigningUp(false)}>
-          Log in
+          Sign in
         </b>
       </span>
     </div>
