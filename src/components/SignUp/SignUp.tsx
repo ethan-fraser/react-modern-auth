@@ -225,7 +225,6 @@ function SignUp({
 
   return (
     <div className={styles.signUpContainer}>
-      <h1>Sign Up</h1>
       <form className={styles.signUpForm}>
         {getFirstErrorByType("general") && (
           <ErrorMessage style={{ marginBottom: "1em" }}>

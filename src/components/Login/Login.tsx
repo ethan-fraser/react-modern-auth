@@ -55,7 +55,6 @@ function Login({
 
   return (
     <div className={styles.loginContainer}>
-      <h1>Login</h1>
       {error && error.type === "general" && (
         <ErrorMessage
           style={{
