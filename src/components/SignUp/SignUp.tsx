@@ -26,6 +26,8 @@ type SignUpProps = {
   enableValidation: boolean;
   handleSignUp?: (data: SignUpData) => Promise<SignUpResponse>;
   setSigningUp: (signingUp: boolean) => void;
+  isLoading: boolean;
+  loadingComponent: React.ReactNode;
 };
 function SignUp({
   theme,
@@ -33,6 +35,8 @@ function SignUp({
   enableValidation,
   handleSignUp,
   setSigningUp,
+  isLoading,
+  loadingComponent,
 }: SignUpProps) {
   const [fieldValues, setFieldValues] = useState<SignUpData>({
     password: "",
@@ -223,7 +227,9 @@ function SignUp({
     (field) => field.type === "avatar"
   ) as AvatarField;
 
-  return (
+  return isLoading ? (
+    loadingComponent
+  ) : (
     <div className={styles.signUpContainer}>
       <h1>Sign Up</h1>
       <form className={styles.signUpForm}>

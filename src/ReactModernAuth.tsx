@@ -10,8 +10,10 @@ const defaultTheme: Theme = {
 
 type AuthProps = {
   config: AuthConfig;
+  isLoading: boolean;
+  loadingComponent: React.ReactNode;
 };
-function Auth({ config }: AuthProps) {
+function Auth({ config, isLoading, loadingComponent }: AuthProps) {
   const [signingUp, setSigningUp] = useState(false);
   const theme = config.theme || defaultTheme;
   const { signUpFields, enableSignUpValidation, oAuthProviders, handlers } =
@@ -24,6 +26,8 @@ function Auth({ config }: AuthProps) {
       fields={signUpFields}
       handleSignUp={handlers.signUp}
       setSigningUp={setSigningUp}
+      isLoading={isLoading}
+      loadingComponent={loadingComponent}
     />
   ) : (
     <Login
@@ -33,6 +37,8 @@ function Auth({ config }: AuthProps) {
       setSigningUp={setSigningUp}
       requestPasswordReset={handlers.requestPasswordReset}
       oAuthProviders={oAuthProviders}
+      isLoading={isLoading}
+      loadingComponent={loadingComponent}
     />
   );
 }

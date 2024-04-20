@@ -12,6 +12,8 @@ type LoginProps = {
   requestPasswordReset?: () => void;
   setSigningUp: (signingUp: boolean) => void;
   oAuthProviders?: OAuthProviders;
+  isLoading: boolean;
+  loadingComponent: React.ReactNode;
 };
 function Login({
   theme,
@@ -20,6 +22,8 @@ function Login({
   requestPasswordReset,
   setSigningUp,
   oAuthProviders,
+  isLoading,
+  loadingComponent,
 }: LoginProps) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -53,7 +57,9 @@ function Login({
     }
   }
 
-  return (
+  return isLoading ? (
+    loadingComponent
+  ) : (
     <div className={styles.loginContainer}>
       <h1>Sign In</h1>
       {error && error.type === "general" && (

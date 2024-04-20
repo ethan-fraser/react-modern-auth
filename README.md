@@ -16,8 +16,11 @@ import {
   AuthConfig,
   SignUpData,
 } from "react-modern-auth";
+import LoadingSpinner from "./components/LoadingSpinner";
+import useAuth from "./hooks/useAuth";
 
 export default function App() {
+  const { isLoading } = useAuth();
   const authConfig: AuthConfig = {
     signUpFields: [
       {
@@ -45,7 +48,13 @@ export default function App() {
     }
   }
 
-  return <Auth config={authConfig} />
+  return (
+    <ReactModernAuth
+      config={authConfig}
+      isLoading={isLoading}
+      loadingComponent={<LoadingSpinner />}
+    />
+  );
 }
 ```
 
