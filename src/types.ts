@@ -82,6 +82,12 @@ export type SignUpResponse = {
   errors: SignUpError[];
 };
 
+// Request password reset response
+export type RequestPasswordResetResponse = {
+  success: boolean;
+  error?: string;
+};
+
 // oAuth providers
 export type OAuthProvider = {
   name: string;
@@ -96,7 +102,9 @@ export type AuthWithPasswordHandler = (
   password: string
 ) => Promise<AuthResponse>;
 export type AuthWithOAuthHandler = (provider: string) => Promise<AuthResponse>;
-export type RequestPasswordResetHandler = () => void;
+export type RequestPasswordResetHandler = (
+  email: string
+) => Promise<RequestPasswordResetResponse>;
 
 // Auth config
 export type AuthConfig = {

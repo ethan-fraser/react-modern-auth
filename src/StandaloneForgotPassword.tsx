@@ -1,32 +1,27 @@
-import SignUp from "./components/SignUp/SignUp";
+import ForgotPassword from "./components/ForgotPassword/ForgotPassword";
 import { AuthConfig } from "./types";
 import defaultTheme from "./util/defaultTheme";
 
-type StandaloneSignUpProps = {
+type StandaloneForgotPasswordProps = {
   config: AuthConfig;
   isLoading: boolean;
   loadingComponent: React.ReactNode;
   onSignInClick: () => void;
 };
-export default function StandaloneSignUp({
+export default function StandaloneForgotPassword({
   config,
   isLoading,
   loadingComponent,
   onSignInClick,
-}: StandaloneSignUpProps) {
+}: StandaloneForgotPasswordProps) {
   const theme = config.theme || defaultTheme;
-  const { signUpFields, enableSignUpValidation, oAuthProviders, handlers } =
-    config;
+  const { handlers } = config;
 
   return (
-    <SignUp
+    <ForgotPassword
       theme={theme}
-      enableValidation={enableSignUpValidation || false}
-      fields={signUpFields}
-      handleSignUp={handlers.signUp}
-      authWithOAuth={handlers.authWithOauth}
+      onSubmit={handlers.requestPasswordReset}
       onSignInClick={onSignInClick}
-      oAuthProviders={oAuthProviders}
       isLoading={isLoading}
       loadingComponent={loadingComponent}
     />

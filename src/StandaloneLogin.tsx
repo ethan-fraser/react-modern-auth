@@ -7,12 +7,14 @@ type StandaloneLoginProps = {
   isLoading: boolean;
   loadingComponent: React.ReactNode;
   onSignUpClick: () => void;
+  onForgotPasswordClick: () => void;
 };
 export default function StandaloneSignIn({
   config,
   isLoading,
   loadingComponent,
   onSignUpClick,
+  onForgotPasswordClick,
 }: StandaloneLoginProps) {
   const theme = config.theme || defaultTheme;
   const { oAuthProviders, handlers } = config;
@@ -21,8 +23,8 @@ export default function StandaloneSignIn({
       theme={theme}
       authWithPassword={handlers.authWithPassword}
       authWithOAuth={handlers.authWithOauth}
-      setSigningUp={onSignUpClick}
-      requestPasswordReset={handlers.requestPasswordReset}
+      onSignUpClick={onSignUpClick}
+      onForgotPasswordClick={onForgotPasswordClick}
       oAuthProviders={oAuthProviders}
       isLoading={isLoading}
       loadingComponent={loadingComponent}

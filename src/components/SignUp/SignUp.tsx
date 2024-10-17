@@ -28,7 +28,7 @@ type SignUpProps = {
   enableValidation: boolean;
   handleSignUp?: (data: SignUpData) => Promise<SignUpResponse>;
   authWithOAuth?: (provider: string) => Promise<AuthResponse>;
-  setSigningUp: (signingUp: boolean) => void;
+  onSignInClick: () => void;
   oAuthProviders?: OAuthProviders;
   isLoading: boolean;
   loadingComponent: React.ReactNode;
@@ -39,7 +39,7 @@ function SignUp({
   enableValidation,
   handleSignUp,
   authWithOAuth,
-  setSigningUp,
+  onSignInClick,
   oAuthProviders,
   isLoading,
   loadingComponent,
@@ -84,9 +84,18 @@ function SignUp({
 
     // Send handleSignUp and handle error
     if (handleSignUp) {
-      const response = await handleSignUp(fieldValues);
-      if (!response.success && response.errors) {
-        setErrors(response.errors);
+      const result = await handleSignUp(fieldValues);
+      if (!result.success) {
+        if (result.errors.length) {
+          setErrors(result.errors);
+        } else {
+          setErrors([
+            {
+              type: "general",
+              message: "An error occurred. Please try again later.",
+            },
+          ]);
+        }
       }
     } else {
       console.error("No sign up handler method provided");
@@ -96,13 +105,22 @@ function SignUp({
   async function handleLoginWithOAuth(provider: string) {
     if (authWithOAuth) {
       const result = await authWithOAuth(provider);
-      if (!result.success && result.error) {
-        setErrors([
-          {
-            type: "general",
-            message: result.error.message,
-          },
-        ]);
+      if (!result.success) {
+        if (result.error) {
+          setErrors([
+            {
+              type: "general",
+              message: result.error.message,
+            },
+          ]);
+        } else {
+          setErrors([
+            {
+              type: "general",
+              message: "An error occurred. Please try again later.",
+            },
+          ]);
+        }
       }
     } else {
       console.error("No oAuth authentication method provided");
@@ -340,7 +358,7 @@ function SignUp({
           )}
           <span className={styles.logInPrompt}>
             Already have an account?{" "}
-            <b className={styles.logInText} onClick={() => setSigningUp(false)}>
+            <b className={styles.logInText} onClick={onSignInClick}>
               Sign in
             </b>
           </span>

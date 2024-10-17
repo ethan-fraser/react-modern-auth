@@ -9,8 +9,8 @@ type LoginProps = {
   theme: Theme;
   authWithPassword?: (email: string, password: string) => Promise<AuthResponse>;
   authWithOAuth?: (provider: string) => Promise<AuthResponse>;
-  requestPasswordReset?: () => void;
-  setSigningUp: (signingUp: boolean) => void;
+  onForgotPasswordClick?: () => void;
+  onSignUpClick: () => void;
   oAuthProviders?: OAuthProviders;
   isLoading: boolean;
   loadingComponent: React.ReactNode;
@@ -19,8 +19,8 @@ function Login({
   theme,
   authWithPassword,
   authWithOAuth,
-  requestPasswordReset,
-  setSigningUp,
+  onForgotPasswordClick,
+  onSignUpClick,
   oAuthProviders,
   isLoading,
   loadingComponent,
@@ -38,8 +38,15 @@ function Login({
     e.preventDefault();
     if (authWithPassword) {
       const result = await authWithPassword(email, password);
-      if (!result.success && result.error) {
-        setError(result.error);
+      if (!result.success) {
+        if (result.error) {
+          setError(result.error);
+        } else {
+          setError({
+            type: "general",
+            message: "An error occurred. Please try again later.",
+          });
+        }
       }
     } else {
       console.error("No password authentication method provided");
@@ -94,7 +101,7 @@ function Login({
             />
             <span
               className={styles.forgotPasswordText}
-              onClick={requestPasswordReset}
+              onClick={onForgotPasswordClick}
             >
               Forgot password?
             </span>
@@ -121,7 +128,7 @@ function Login({
           )}
           <span className={styles.signUpPrompt}>
             Don't have an account?{" "}
-            <b className={styles.signUpText} onClick={() => setSigningUp(true)}>
+            <b className={styles.signUpText} onClick={onSignUpClick}>
               Sign up
             </b>
           </span>
