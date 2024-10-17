@@ -19,7 +19,6 @@ import AvatarUpload from "../AvatarUpload/AvatarUpload";
 import Button from "../Button/Button";
 import validateSignUpData from "../../util/validateSignUpData";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
-import FormHeader from "../FormHeader/FormHeader";
 
 type SignUpProps = {
   theme: Theme;
@@ -234,7 +233,6 @@ function SignUp({
         loadingComponent
       ) : (
         <>
-          <FormHeader>Sign Up</FormHeader>
           <form className={styles.signUpForm}>
             {getFirstErrorByType("general") && (
               <ErrorMessage style={{ marginBottom: "1em" }}>

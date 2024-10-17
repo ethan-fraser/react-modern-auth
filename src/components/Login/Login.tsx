@@ -4,7 +4,6 @@ import TextInput from "../TextInput/TextInput";
 import Button from "../Button/Button";
 import { AuthError, AuthResponse, OAuthProviders, Theme } from "../../types";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
-import FormHeader from "../FormHeader/FormHeader";
 
 type LoginProps = {
   theme: Theme;
@@ -64,7 +63,6 @@ function Login({
         loadingComponent
       ) : (
         <>
-          <FormHeader>Sign In</FormHeader>
           {error && error.type === "general" && (
             <ErrorMessage
               style={{
