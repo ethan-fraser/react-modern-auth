@@ -1,4 +1,6 @@
 import ReactModernAuth from "./ReactModernAuth";
+import Login from "./StandaloneLogin";
+import SignUp from "./StandaloneSignUp";
 import {
   Theme,
   AuthErrorType,
@@ -26,7 +28,7 @@ import {
   AuthConfig,
 } from "./types";
 
-export { ReactModernAuth };
+export { ReactModernAuth, Login, SignUp };
 export type {
   Theme,
   AuthErrorType,
