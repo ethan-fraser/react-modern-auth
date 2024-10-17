@@ -58,6 +58,36 @@ export default function App() {
 }
 ```
 
+If you want each component on separate routes, you can also import each component individually.
+``` typescript
+import { Login, SignUp } from "react-modern-auth";
+import LoadingSpinner from "../components/LoadingSpinner";
+import useAuth from "../hooks/useAuth";
+import authConfig from "../lib/authConfig"
+
+export function LoginView() {
+  const { isLoading } = useAuth();
+  return (
+    <Login
+      config={authConfig}
+      isLoading={isLoading}
+      loadingComponent={<LoadingSpinner />}
+    />
+  );
+}
+
+export function SignUpView() {
+  const { isLoading } = useAuth();
+  return (
+    <SignUp
+      config={authConfig}
+      isLoading={isLoading}
+      loadingComponent={<LoadingSpinner />}
+    />
+  );
+}
+```
+
 ## `AuthConfig` options
 ### `signUpFields`
 Sign up fields are defined by one of the following:
