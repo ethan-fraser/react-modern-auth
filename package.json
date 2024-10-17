@@ -1,6 +1,6 @@
 {
   "name": "react-modern-auth",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "main": "dist/react-modern-auth.js",
   "types": "dist/index.d.ts",
   "repository": "https://github.com/ethan-fraser/react-modern-auth",
