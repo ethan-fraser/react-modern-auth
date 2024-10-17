@@ -260,7 +260,7 @@ function SignUp({
             <TextInput
               type="password"
               label="Password"
-              placeholder="password"
+              placeholder="Password"
               accentColor={theme.accentColor}
               onChange={fieldChangeHandlers.password}
               error={getFirstErrorByType("password")}
@@ -269,7 +269,7 @@ function SignUp({
             <TextInput
               type="password"
               label="Confirm Password"
-              placeholder="password"
+              placeholder="Confirm Password"
               accentColor={theme.accentColor}
               onChange={fieldChangeHandlers.passwordConfirm}
               error={getFirstErrorByType("passwordConfirm")}

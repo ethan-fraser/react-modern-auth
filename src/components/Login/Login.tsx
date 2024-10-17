@@ -89,7 +89,7 @@ function Login({
             <TextInput
               type="password"
               label="Password"
-              placeholder="password"
+              placeholder="Password"
               accentColor={theme.accentColor}
               error={error && error.type === "password" ? error.message : ""}
               onChange={(value) => setPassword(value)}
