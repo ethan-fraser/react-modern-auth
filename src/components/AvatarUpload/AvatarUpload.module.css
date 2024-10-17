@@ -6,13 +6,13 @@
 }
 
 .label {
-  font-weight: 700;
+  font-weight: 600;
   align-self: flex-start;
 }
 
 .required {
   font-weight: 400;
-  color: #E72326;
+  color: #e72326;
   margin-left: 0.1em;
 }
 
