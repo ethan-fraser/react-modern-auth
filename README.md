@@ -63,11 +63,11 @@ export default function App() {
 Sign up fields are defined by one of the following:
 | Type                 | Input Type | Parameters | Description |
 |----------------------|------------|------------|-------------|
-| email (optional)          | text       | `required`: boolean |    |
-| name (optional)           | text       | `required`: boolean |    |
-| firstName (optional)      | text       | `required`: boolean | If provided, `lastName` is also required and they will be rendered side-by-side. |
-| lastName (optional)       | text       | `required`: boolean | If provided, `firstName` is also required and they will be rendered side-by-side. |
-| username (optional)       | text       | `required`: boolean |    |
+| email (optional)          | text       | `required`: boolean, `defaultValue`: string |    |
+| name (optional)           | text       | `required`: boolean, `defaultValue`: string |    |
+| firstName (optional)      | text       | `required`: boolean, `defaultValue`: string | If provided, `lastName` is also required and they will be rendered side-by-side. |
+| lastName (optional)       | text       | `required`: boolean, `defaultValue`: string | If provided, `firstName` is also required and they will be rendered side-by-side. |
+| username (optional)       | text       | `required`: boolean, `defaultValue`: string |    |
 | avatar (optional)         | file       | `required`: boolean, `maxMB`: number | `maxMB` can be specified to limit the size of the file attached. |
 | termsAccepted (optional)  | checkbox   | `privacyPolicyURL`: string, `termsAndConditionsURL`: string | Links to `privacyPolicyURL` and/or `termsAndConditionsURL` can be provided. Field required if validation is enabled. |
 | password             | password   | | Must be longer than 8 characters if validation is enabled. Does not need to be included in `authConfig.signUpFields` since it is non-optional. |
