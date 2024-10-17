@@ -48,6 +48,17 @@ function TextInput({
             <img src={exclamationMark} alt="Exclamation mark" />
           </div>
         )}
+      </div>
+      <div className={styles.textInputContainer}>
+        <input
+          className={`${styles.textInput} ${error ? styles.erroredInput : ""}`}
+          style={inputStyle}
+          name={type}
+          type={passwordVisisble ? "text" : type}
+          placeholder={placeholder}
+          value={value}
+          onChange={handleChange}
+        />
         {type === "password" && (
           <img
             src={passwordVisisble ? eye : eyeSlash}
@@ -57,15 +68,6 @@ function TextInput({
           />
         )}
       </div>
-      <input
-        className={`${styles.textInput} ${error ? styles.erroredInput : ""}`}
-        style={inputStyle}
-        name={type}
-        type={passwordVisisble ? "text" : type}
-        placeholder={placeholder}
-        value={value}
-        onChange={handleChange}
-      />
     </div>
   );
 }

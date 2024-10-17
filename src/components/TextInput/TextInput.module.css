@@ -18,18 +18,10 @@
   font-weight: 700;
 }
 
-.eyeIcon {
-  position: absolute;
-  bottom: -1.5em;
-  right: 1em;
-  height: 15px;
-  cursor: pointer;
-}
-
 .errorMessage {
   display: flex;
   font-size: 0.8em;
-  color: #E72326;
+  color: #e72326;
   font-weight: 500;
 }
 
@@ -39,11 +31,26 @@
   align-self: center;
 }
 
+.textInputContainer {
+  position: relative;
+  width: 100%;
+}
+
+.eyeIcon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 1em;
+  height: 15px;
+  cursor: pointer;
+}
+
 .textInput {
   padding: 8px;
   border: 1px solid #dddddddd;
   border-radius: 4px;
   outline: none;
+  width: 100%;
 }
 
 .textInput:focus {
@@ -51,7 +58,7 @@
 }
 
 .erroredInput {
-  border: 1px solid #E72326;
+  border: 1px solid #e72326;
   background-color: #ffeeee;
 }
 
@@ -61,7 +68,7 @@
 
 .required {
   font-weight: 400;
-  color: #E72326;
+  color: #e72326;
   margin-left: 0.1em;
 }
 
@@ -71,6 +78,7 @@
   }
 
   .eyeIcon {
-    filter: invert(87%) sepia(100%) saturate(34%) hue-rotate(73deg) brightness(114%) contrast(107%);
+    filter: invert(87%) sepia(100%) saturate(34%) hue-rotate(73deg)
+      brightness(114%) contrast(107%);
   }
 }
