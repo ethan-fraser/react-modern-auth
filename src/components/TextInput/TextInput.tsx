@@ -8,6 +8,7 @@ type TextInputProps = {
   type?: "text" | "email" | "password";
   label: string;
   placeholder: string;
+  defaultValue?: string;
   error?: string;
   accentColor: string;
   required?: boolean;
@@ -17,12 +18,13 @@ function TextInput({
   type = "text",
   label,
   placeholder,
+  defaultValue = "",
   error,
   accentColor,
   required = false,
   onChange,
 }: TextInputProps) {
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState(defaultValue);
   const [passwordVisisble, setPasswordVisible] = useState(false);
 
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {

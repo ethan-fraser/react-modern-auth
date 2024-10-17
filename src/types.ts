@@ -50,6 +50,7 @@ export type TextFieldType =
 export type TextField = {
   type: TextFieldType;
   required?: boolean;
+  defaultValue?: string;
 };
 export type SignUpField = TextField | TermsAcceptedField | AvatarField;
 export type SignUpFields = SignUpField[];

@@ -171,6 +171,7 @@ function SignUp({
               type="text"
               label="Name"
               placeholder="Your Name"
+              defaultValue={field.defaultValue}
               accentColor={theme.accentColor}
               onChange={fieldChangeHandlers[field.type]!}
               required={field.required || false}
@@ -184,6 +185,7 @@ function SignUp({
               type="email"
               label="Email"
               placeholder="you@example.com"
+              defaultValue={field.defaultValue}
               accentColor={theme.accentColor}
               onChange={fieldChangeHandlers[field.type]!}
               required={field.required || false}
@@ -197,6 +199,7 @@ function SignUp({
               type="text"
               label="Username"
               placeholder="username"
+              defaultValue={field.defaultValue}
               accentColor={theme.accentColor}
               onChange={fieldChangeHandlers[field.type]!}
               required={field.required || false}
@@ -224,6 +227,7 @@ function SignUp({
           type="text"
           label="First Name"
           placeholder="First name"
+          defaultValue={firstNameField.defaultValue}
           accentColor={theme.accentColor}
           onChange={fieldChangeHandlers.firstName!}
           required={firstNameField.required || false}
@@ -233,6 +237,7 @@ function SignUp({
           type="text"
           label="Last Name"
           placeholder="Last name"
+          defaultValue={lastNameField.defaultValue}
           accentColor={theme.accentColor}
           onChange={fieldChangeHandlers.lastName!}
           required={lastNameField.required || false}
