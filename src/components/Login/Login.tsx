@@ -58,73 +58,77 @@ function Login({
     }
   }
 
-  return isLoading ? (
-    loadingComponent
-  ) : (
+  return (
     <div className={styles.loginContainer}>
-      <FormHeader>Sign In</FormHeader>
-      {error && error.type === "general" && (
-        <ErrorMessage
-          style={{
-            marginBottom: "2em",
-            width: "100%",
-            paddingLeft: 0,
-            paddingRight: 0,
-          }}
-        >
-          {error.message}
-        </ErrorMessage>
-      )}
-      <form className={styles.loginForm}>
-        <TextInput
-          type="email"
-          label="Email"
-          placeholder="you@example.com"
-          accentColor={theme.accentColor}
-          error={error && error.type === "identity" ? error.message : ""}
-          onChange={(value) => setEmail(value)}
-        />
-        <TextInput
-          type="password"
-          label="Password"
-          placeholder="password"
-          accentColor={theme.accentColor}
-          error={error && error.type === "password" ? error.message : ""}
-          onChange={(value) => setPassword(value)}
-        />
-        <span
-          className={styles.forgotPasswordText}
-          onClick={requestPasswordReset}
-        >
-          Forgot password?
-        </span>
-        <Button theme={theme} onClick={handleLogin}>
-          Log In
-        </Button>
-      </form>
-      {oAuthProviders && (
-        <div className={styles.oAuthContainer}>
-          <em className={styles.oAuthBreak}>or</em>
-          <div className={styles.oAuthProviderContainer}>
-            {oAuthProviders.map((oAuthProvider) => (
-              <div
-                key={oAuthProvider.name}
-                className={styles.oAuthProvider}
-                style={themeStyle}
-                onClick={() => handleLoginWithOAuth(oAuthProvider.name)}
-              >
-                <img src={oAuthProvider.logoSrc} alt={oAuthProvider.name} />
+      {isLoading ? (
+        loadingComponent
+      ) : (
+        <>
+          <FormHeader>Sign In</FormHeader>
+          {error && error.type === "general" && (
+            <ErrorMessage
+              style={{
+                marginBottom: "2em",
+                width: "100%",
+                paddingLeft: 0,
+                paddingRight: 0,
+              }}
+            >
+              {error.message}
+            </ErrorMessage>
+          )}
+          <form className={styles.loginForm}>
+            <TextInput
+              type="email"
+              label="Email"
+              placeholder="you@example.com"
+              accentColor={theme.accentColor}
+              error={error && error.type === "identity" ? error.message : ""}
+              onChange={(value) => setEmail(value)}
+            />
+            <TextInput
+              type="password"
+              label="Password"
+              placeholder="password"
+              accentColor={theme.accentColor}
+              error={error && error.type === "password" ? error.message : ""}
+              onChange={(value) => setPassword(value)}
+            />
+            <span
+              className={styles.forgotPasswordText}
+              onClick={requestPasswordReset}
+            >
+              Forgot password?
+            </span>
+            <Button theme={theme} onClick={handleLogin}>
+              Log In
+            </Button>
+          </form>
+          {oAuthProviders && (
+            <div className={styles.oAuthContainer}>
+              <em className={styles.oAuthBreak}>or</em>
+              <div className={styles.oAuthProviderContainer}>
+                {oAuthProviders.map((oAuthProvider) => (
+                  <div
+                    key={oAuthProvider.name}
+                    className={styles.oAuthProvider}
+                    style={themeStyle}
+                    onClick={() => handleLoginWithOAuth(oAuthProvider.name)}
+                  >
+                    <img src={oAuthProvider.logoSrc} alt={oAuthProvider.name} />
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
-        </div>
+            </div>
+          )}
+          <span className={styles.signUpPrompt}>
+            Don't have an account?{" "}
+            <b className={styles.signUpText} onClick={() => setSigningUp(true)}>
+              Sign up
+            </b>
+          </span>
+        </>
       )}
-      <span className={styles.signUpPrompt}>
-        Don't have an account?{" "}
-        <b className={styles.signUpText} onClick={() => setSigningUp(true)}>
-          Sign up
-        </b>
-      </span>
     </div>
   );
 }

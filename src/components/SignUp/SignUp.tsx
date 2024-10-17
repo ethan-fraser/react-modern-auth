@@ -228,71 +228,77 @@ function SignUp({
     (field) => field.type === "avatar"
   ) as AvatarField;
 
-  return isLoading ? (
-    loadingComponent
-  ) : (
+  return (
     <div className={styles.signUpContainer}>
-      <FormHeader>Sign Up</FormHeader>
-      <form className={styles.signUpForm}>
-        {getFirstErrorByType("general") && (
-          <ErrorMessage style={{ marginBottom: "1em" }}>
-            {getFirstErrorByType("general")}
-          </ErrorMessage>
-        )}
-        {avatarField && (
-          <>
-            <AvatarUpload
-              onChange={fieldChangeHandlers.avatar!}
-              required={avatarField.required || false}
-            />
-            {getFirstErrorByType("avatar") && (
-              <ErrorMessage style={{ marginTop: "-2em", marginBottom: "2em" }}>
-                {getFirstErrorByType("avatar")}
+      {isLoading ? (
+        loadingComponent
+      ) : (
+        <>
+          <FormHeader>Sign Up</FormHeader>
+          <form className={styles.signUpForm}>
+            {getFirstErrorByType("general") && (
+              <ErrorMessage style={{ marginBottom: "1em" }}>
+                {getFirstErrorByType("general")}
               </ErrorMessage>
             )}
-          </>
-        )}
-        {...optionalFieldComponents}
-        <TextInput
-          type="password"
-          label="Password"
-          placeholder="password"
-          accentColor={theme.accentColor}
-          onChange={fieldChangeHandlers.password}
-          error={getFirstErrorByType("password")}
-          required
-        />
-        <TextInput
-          type="password"
-          label="Confirm Password"
-          placeholder="password"
-          accentColor={theme.accentColor}
-          onChange={fieldChangeHandlers.passwordConfirm}
-          error={getFirstErrorByType("passwordConfirm")}
-          required
-        />
-        {termsAcceptedField && (
-          <AcceptTermsCheckbox
-            onChange={fieldChangeHandlers.termsAccepted!}
-            privacyPolicyURL={termsAcceptedField.privacyPolicyURL}
-            termsAndConditionsURL={termsAcceptedField.termsAndConditionsURL}
-          />
-        )}
-        {getFirstErrorByType("termsAccepted") && (
-          <ErrorMessage style={{ marginBottom: "1em" }}>
-            {getFirstErrorByType("termsAccepted")}
-          </ErrorMessage>
-        )}
-        <Button theme={theme} onClick={onSignUpButtonClicked}>
-          Sign Up
-        </Button>
-      </form>
-      <span className={styles.logInPrompt}>
-        Already have an account?{" "}
-        <b className={styles.logInText} onClick={() => setSigningUp(false)}>
-          Sign in
-        </b>
-      </span>
+            {avatarField && (
+              <>
+                <AvatarUpload
+                  onChange={fieldChangeHandlers.avatar!}
+                  required={avatarField.required || false}
+                />
+                {getFirstErrorByType("avatar") && (
+                  <ErrorMessage
+                    style={{ marginTop: "-2em", marginBottom: "2em" }}
+                  >
+                    {getFirstErrorByType("avatar")}
+                  </ErrorMessage>
+                )}
+              </>
+            )}
+            {...optionalFieldComponents}
+            <TextInput
+              type="password"
+              label="Password"
+              placeholder="password"
+              accentColor={theme.accentColor}
+              onChange={fieldChangeHandlers.password}
+              error={getFirstErrorByType("password")}
+              required
+            />
+            <TextInput
+              type="password"
+              label="Confirm Password"
+              placeholder="password"
+              accentColor={theme.accentColor}
+              onChange={fieldChangeHandlers.passwordConfirm}
+              error={getFirstErrorByType("passwordConfirm")}
+              required
+            />
+            {termsAcceptedField && (
+              <AcceptTermsCheckbox
+                onChange={fieldChangeHandlers.termsAccepted!}
+                privacyPolicyURL={termsAcceptedField.privacyPolicyURL}
+                termsAndConditionsURL={termsAcceptedField.termsAndConditionsURL}
+              />
+            )}
+            {getFirstErrorByType("termsAccepted") && (
+              <ErrorMessage style={{ marginBottom: "1em" }}>
+                {getFirstErrorByType("termsAccepted")}
+              </ErrorMessage>
+            )}
+            <Button theme={theme} onClick={onSignUpButtonClicked}>
+              Sign Up
+            </Button>
+          </form>
+          <span className={styles.logInPrompt}>
+            Already have an account?{" "}
+            <b className={styles.logInText} onClick={() => setSigningUp(false)}>
+              Sign in
+            </b>
+          </span>
+        </>
+      )}
     </div>
   );
 }
