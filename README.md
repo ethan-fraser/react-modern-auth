@@ -46,7 +46,7 @@ export default function App() {
         // Handle password reset request
       }
     }
-  }
+  };
 
   return (
     <ReactModernAuth
@@ -60,10 +60,20 @@ export default function App() {
 
 If you want each component on separate routes, you can also import each component individually.
 ``` typescript
-import { Login, SignUp } from "react-modern-auth";
+import { Login, SignUp, ForgotPassword } from "react-modern-auth";
 import LoadingSpinner from "../components/LoadingSpinner";
 import useAuth from "../hooks/useAuth";
 import authConfig from "../lib/authConfig"
+
+function handleNavigateToSignUp() {
+  // Navigate to sign up page
+}
+function handleNavigateToLogin() {
+  // Navigate to login page
+}
+function handleNavigateToForgotPassword() {
+  // Navigate to forgot password page
+}
 
 export function LoginView() {
   const { isLoading } = useAuth();
@@ -72,6 +82,8 @@ export function LoginView() {
       config={authConfig}
       isLoading={isLoading}
       loadingComponent={<LoadingSpinner />}
+      onSignUpClick={handleNavigateToSignUp}
+      onForgotPasswordClick={handleNavigateToForgotPassword}
     />
   );
 }
@@ -83,6 +95,19 @@ export function SignUpView() {
       config={authConfig}
       isLoading={isLoading}
       loadingComponent={<LoadingSpinner />}
+      onSignInClick={handleNavigateToLogin}
+    />
+  );
+}
+
+export function ForgotPasswordView() {
+  const { isLoading } = useAuth();
+  return (
+    <ForgotPassword
+      config={authConfig}
+      isLoading={isLoading}
+      loadingComponent={<LoadingSpinner />}
+      onSignInClick={handleNavigateToLogin}
     />
   );
 }
