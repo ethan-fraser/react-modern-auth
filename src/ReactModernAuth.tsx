@@ -25,7 +25,9 @@ function Auth({ config, isLoading, loadingComponent }: AuthProps) {
       enableValidation={enableSignUpValidation || false}
       fields={signUpFields}
       handleSignUp={handlers.signUp}
+      authWithOAuth={handlers.authWithOauth}
       setSigningUp={setSigningUp}
+      oAuthProviders={oAuthProviders}
       isLoading={isLoading}
       loadingComponent={loadingComponent}
     />

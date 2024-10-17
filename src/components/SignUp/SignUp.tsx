@@ -11,6 +11,8 @@ import {
   TermsAcceptedField,
   SignUpError,
   SignUpErrorType,
+  OAuthProviders,
+  AuthResponse,
 } from "../../types";
 import styles from "./SignUp.module.css";
 import TextInput from "../TextInput/TextInput";
@@ -25,7 +27,9 @@ type SignUpProps = {
   fields: SignUpFields;
   enableValidation: boolean;
   handleSignUp?: (data: SignUpData) => Promise<SignUpResponse>;
+  authWithOAuth?: (provider: string) => Promise<AuthResponse>;
   setSigningUp: (signingUp: boolean) => void;
+  oAuthProviders?: OAuthProviders;
   isLoading: boolean;
   loadingComponent: React.ReactNode;
 };
@@ -34,7 +38,9 @@ function SignUp({
   fields,
   enableValidation,
   handleSignUp,
+  authWithOAuth,
   setSigningUp,
+  oAuthProviders,
   isLoading,
   loadingComponent,
 }: SignUpProps) {
@@ -55,6 +61,11 @@ function SignUp({
         }),
     });
   const [errors, setErrors] = useState<SignUpError[]>([]);
+
+  // Applying theme as CSS variables requires type manipulation
+  const themeStyle: React.CSSProperties & { "--accent-color": string } = {
+    "--accent-color": theme.accentColor,
+  };
 
   function getFirstErrorByType(type: SignUpErrorType) {
     return errors.find((error) => error.type === type)?.message || "";
@@ -79,6 +90,22 @@ function SignUp({
       }
     } else {
       console.error("No sign up handler method provided");
+    }
+  }
+
+  async function handleLoginWithOAuth(provider: string) {
+    if (authWithOAuth) {
+      const result = await authWithOAuth(provider);
+      if (!result.success && result.error) {
+        setErrors([
+          {
+            type: "general",
+            message: result.error.message,
+          },
+        ]);
+      }
+    } else {
+      console.error("No oAuth authentication method provided");
     }
   }
 
@@ -289,6 +316,23 @@ function SignUp({
               Sign Up
             </Button>
           </form>
+          {oAuthProviders && (
+            <div className={styles.oAuthContainer}>
+              <em className={styles.oAuthBreak}>or</em>
+              <div className={styles.oAuthProviderContainer}>
+                {oAuthProviders.map((oAuthProvider) => (
+                  <div
+                    key={oAuthProvider.name}
+                    className={styles.oAuthProvider}
+                    style={themeStyle}
+                    onClick={() => handleLoginWithOAuth(oAuthProvider.name)}
+                  >
+                    <img src={oAuthProvider.logoSrc} alt={oAuthProvider.name} />
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
           <span className={styles.logInPrompt}>
             Already have an account?{" "}
             <b className={styles.logInText} onClick={() => setSigningUp(false)}>
