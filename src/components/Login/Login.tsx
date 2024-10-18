@@ -36,6 +36,7 @@ function Login({
 
   async function handleLogin(e: React.FormEvent) {
     e.preventDefault();
+    setError(null);
     if (authWithPassword) {
       const result = await authWithPassword(email, password);
       if (!result.success) {

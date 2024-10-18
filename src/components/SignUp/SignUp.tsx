@@ -73,6 +73,7 @@ function SignUp({
 
   async function onSignUpButtonClicked(event: React.FormEvent) {
     event.preventDefault();
+    setErrors([]);
 
     if (enableValidation) {
       const errors = validateSignUpData(fields, fieldValues);

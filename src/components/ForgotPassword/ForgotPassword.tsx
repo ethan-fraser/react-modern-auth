@@ -24,6 +24,8 @@ export default function ForgotPassword({
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+    setError(null);
+
     const result = await onSubmit(email);
     if (!result.success) {
       if (result.error) {
