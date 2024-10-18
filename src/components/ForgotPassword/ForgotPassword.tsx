@@ -21,13 +21,17 @@ export default function ForgotPassword({
 }: ForgotPasswordProps) {
   const [email, setEmail] = useState("");
   const [error, setError] = useState<string | null>(null);
+  const [success, setSuccess] = useState(false);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setError(null);
+    setSuccess(false);
 
     const result = await onSubmit(email);
-    if (!result.success) {
+    if (result.success) {
+      setSuccess(true);
+    } else {
       if (result.error) {
         setError(result.error);
       } else {
@@ -53,6 +57,19 @@ export default function ForgotPassword({
               }}
             >
               {error}
+            </Alert>
+          )}
+          {success && (
+            <Alert
+              type="success"
+              style={{
+                marginBottom: "2em",
+                width: "100%",
+                paddingLeft: 0,
+                paddingRight: 0,
+              }}
+            >
+              Password reset email sent. Check your inbox.
             </Alert>
           )}
           <form className={styles.forgotPasswordForm}>
