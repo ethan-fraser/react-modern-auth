@@ -2,6 +2,7 @@ import ReactModernAuth from "./ReactModernAuth";
 import Login from "./components/Login/StandaloneLogin";
 import SignUp from "./components/SignUp/StandaloneSignUp";
 import ForgotPassword from "./components/ForgotPassword/StandaloneForgotPassword";
+import ResetPassword from "./components/ResetPassword/ResetPassword";
 import {
   Theme,
   AuthErrorType,
@@ -29,7 +30,7 @@ import {
   AuthConfig,
 } from "./types";
 
-export { ReactModernAuth, Login, SignUp, ForgotPassword };
+export { ReactModernAuth, Login, SignUp, ForgotPassword, ResetPassword };
 export type {
   Theme,
   AuthErrorType,

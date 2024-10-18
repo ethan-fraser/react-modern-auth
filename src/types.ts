@@ -88,6 +88,12 @@ export type RequestPasswordResetResponse = {
   error?: string;
 };
 
+// Reset password response
+export type ResetPasswordResponse = {
+  success: boolean;
+  error?: string;
+};
+
 // oAuth providers
 export type OAuthProvider = {
   name: string;
@@ -105,6 +111,9 @@ export type AuthWithOAuthHandler = (provider: string) => Promise<AuthResponse>;
 export type RequestPasswordResetHandler = (
   email: string
 ) => Promise<RequestPasswordResetResponse>;
+export type ResetPasswordHandler = (
+  password: string
+) => Promise<ResetPasswordResponse>;
 
 // Auth config
 export type AuthConfig = {
@@ -115,6 +124,7 @@ export type AuthConfig = {
     authWithPassword: AuthWithPasswordHandler;
     authWithOauth?: AuthWithOAuthHandler;
     requestPasswordReset: RequestPasswordResetHandler;
+    resetPassword?: ResetPasswordHandler;
     signUp: SignUpHandler;
   };
   theme?: Theme;
