@@ -1,7 +1,5 @@
-.errorMessage {
-  background-color: #ffeeee;
+.alert {
   font-size: 0.8em;
-  color: #d8181b;
   font-weight: 500;
   border-radius: 4px;
   display: flex;
@@ -10,10 +8,18 @@
   text-align: left;
 }
 
-.errorMessage img {
+.alert img {
   height: 1.5em;
   width: 1.8em;
   margin: 0 0.5em;
-  filter: invert(11%) sepia(87%) saturate(5833%) hue-rotate(353deg)
-    brightness(96%) contrast(89%);
+}
+
+.error {
+  background-color: #ffeeee;
+  color: #d8181b;
+}
+
+.success {
+  background-color: #e6f4ea;
+  color: #1e7e34;
 }

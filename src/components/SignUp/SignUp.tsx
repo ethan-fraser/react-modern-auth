@@ -20,7 +20,7 @@ import AcceptTermsCheckbox from "../AcceptTermsCheckbox/AcceptTermsCheckbox";
 import AvatarUpload from "../AvatarUpload/AvatarUpload";
 import Button from "../Button/Button";
 import validateSignUpData from "../../util/validateSignUpData";
-import ErrorMessage from "../ErrorMessage/ErrorMessage";
+import Alert from "../Alert/Alert";
 
 type SignUpProps = {
   theme: Theme;
@@ -286,9 +286,9 @@ function SignUp({
         <>
           <form className={styles.signUpForm}>
             {getFirstErrorByType("general") && (
-              <ErrorMessage style={{ marginBottom: "1em" }}>
+              <Alert type="error" style={{ marginBottom: "1em" }}>
                 {getFirstErrorByType("general")}
-              </ErrorMessage>
+              </Alert>
             )}
             {avatarField && (
               <>
@@ -297,11 +297,12 @@ function SignUp({
                   required={avatarField.required || false}
                 />
                 {getFirstErrorByType("avatar") && (
-                  <ErrorMessage
+                  <Alert
+                    type="error"
                     style={{ marginTop: "-2em", marginBottom: "2em" }}
                   >
                     {getFirstErrorByType("avatar")}
-                  </ErrorMessage>
+                  </Alert>
                 )}
               </>
             )}
@@ -332,9 +333,9 @@ function SignUp({
               />
             )}
             {getFirstErrorByType("termsAccepted") && (
-              <ErrorMessage style={{ marginBottom: "1em" }}>
+              <Alert type="error" style={{ marginBottom: "1em" }}>
                 {getFirstErrorByType("termsAccepted")}
-              </ErrorMessage>
+              </Alert>
             )}
             <Button theme={theme} onClick={onSignUpButtonClicked}>
               Sign Up

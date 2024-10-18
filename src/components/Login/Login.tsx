@@ -3,7 +3,7 @@ import styles from "./Login.module.css";
 import TextInput from "../TextInput/TextInput";
 import Button from "../Button/Button";
 import { AuthError, AuthResponse, OAuthProviders, Theme } from "../../types";
-import ErrorMessage from "../ErrorMessage/ErrorMessage";
+import Alert from "../Alert/Alert";
 
 type LoginProps = {
   theme: Theme;
@@ -72,7 +72,8 @@ function Login({
       ) : (
         <>
           {error && error.type === "general" && (
-            <ErrorMessage
+            <Alert
+              type="error"
               style={{
                 marginBottom: "2em",
                 width: "100%",
@@ -81,7 +82,7 @@ function Login({
               }}
             >
               {error.message}
-            </ErrorMessage>
+            </Alert>
           )}
           <form className={styles.loginForm}>
             <TextInput

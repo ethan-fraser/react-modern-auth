@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { RequestPasswordResetHandler, Theme } from "../../types";
 import styles from "./ForgotPassword.module.css";
-import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import TextInput from "../TextInput/TextInput";
 import Button from "../Button/Button";
+import Alert from "../Alert/Alert";
 
 type ForgotPasswordProps = {
   theme: Theme;
@@ -43,7 +43,8 @@ export default function ForgotPassword({
       ) : (
         <>
           {error && (
-            <ErrorMessage
+            <Alert
+              type="error"
               style={{
                 marginBottom: "2em",
                 width: "100%",
@@ -52,7 +53,7 @@ export default function ForgotPassword({
               }}
             >
               {error}
-            </ErrorMessage>
+            </Alert>
           )}
           <form className={styles.forgotPasswordForm}>
             <TextInput
