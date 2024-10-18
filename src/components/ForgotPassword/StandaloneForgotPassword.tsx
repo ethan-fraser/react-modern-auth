@@ -1,6 +1,6 @@
-import ForgotPassword from "./components/ForgotPassword/ForgotPassword";
-import { AuthConfig } from "./types";
-import defaultTheme from "./util/defaultTheme";
+import ForgotPassword from "./ForgotPassword";
+import { AuthConfig } from "../../types";
+import defaultTheme from "../../util/defaultTheme";
 
 type StandaloneForgotPasswordProps = {
   config: AuthConfig;

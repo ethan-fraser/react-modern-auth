@@ -1,6 +1,6 @@
-import SignUp from "./components/SignUp/SignUp";
-import { AuthConfig } from "./types";
-import defaultTheme from "./util/defaultTheme";
+import SignUp from "./SignUp";
+import { AuthConfig } from "../../types";
+import defaultTheme from "../../util/defaultTheme";
 
 type StandaloneSignUpProps = {
   config: AuthConfig;

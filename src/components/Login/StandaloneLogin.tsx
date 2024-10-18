@@ -1,6 +1,6 @@
-import Login from "./components/Login/Login";
-import { AuthConfig } from "./types";
-import defaultTheme from "./util/defaultTheme";
+import Login from "./Login";
+import { AuthConfig } from "../../types";
+import defaultTheme from "../../util/defaultTheme";
 
 type StandaloneLoginProps = {
   config: AuthConfig;
